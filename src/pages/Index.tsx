@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { CompanyShowcase } from "@/components/CompanyShowcase";
 import { Navbar } from "@/components/Navbar";
+import Contact from "./Contact";
 
 const Index = () => {
   useEffect(() => {
@@ -18,9 +19,19 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <Hero />
-      <Services />
-      <CompanyShowcase />
+      <div id="home">
+        <Hero />
+      </div>
+      <div id="services">
+        <Services />
+      </div>
+      <div id="about">
+        <CompanyShowcase />
+      </div>
+      <div id="contact">
+        <Contact />
+      </div>
+
     </div>
   );
 };
