@@ -63,21 +63,21 @@ export const Navbar = () => {
               </a>
               <a
                 href="#services"
-                className="text-gray-600 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={(e) => handleScroll(e, "services")}
               >
                 Services
               </a>
               <a
                 href="#about"
-                className="text-gray-600 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={(e) => handleScroll(e, "about")}
               >
                 About Us
               </a>
               <a
                 href="#contact"
-                className="text-gray-600 hover:text-primary transition-colors"
+                className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={(e) => handleScroll(e, "contact")}
               >
                 Contact
