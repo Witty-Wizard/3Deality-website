@@ -5,7 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { CompanyShowcase } from "@/components/CompanyShowcase";
 import { Navbar } from "@/components/Navbar";
-import Contact from "./Contact";
+import Contact from "../components/Contact";
 
 const Index = () => {
   useEffect(() => {
