@@ -1,21 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Printer, X, Menu } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
+
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`); // Navigate to home page with hash
+    } else {
       setTimeout(() => {
-        element.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     }
   };
@@ -72,7 +88,7 @@ export const Navbar = () => {
       </motion.header>
 
       {/* Mobile Menu Button - Now fixed at the bottom */}
-      <button 
+      <button
         onClick={toggleMobileMenu}
         className="md:hidden fixed bottom-4 right-4 z-50 p-4 rounded-full bg-primary text-white shadow-lg"
         aria-label="Toggle mobile menu"
@@ -96,7 +112,7 @@ export const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(false)}
               className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
             />
-            
+
             {/* Mobile Menu */}
             <motion.nav
               initial={{ opacity: 0, y: "100%" }}
