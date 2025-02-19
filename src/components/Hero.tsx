@@ -2,11 +2,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 
 export const Hero = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-gray-50">
       <div className="container px-4 mx-auto relative z-10">
@@ -25,7 +25,7 @@ export const Hero = () => {
             Bringing your designs to life with precision and quality.
           </p>
           <div className="mt-10 flex items-center justify-center gap-4">
-            <Button size="lg" className="group" onClick={() => navigate('quote')}>
+            <Button size="lg" className="group" onClick={() => router.push('quote')}>
               Get a Quote
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>

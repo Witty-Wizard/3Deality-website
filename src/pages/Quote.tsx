@@ -54,10 +54,10 @@ const Quote = () => {
                         transition={{ duration: 0.5 }}
                         className="text-center mb-12"
                     >
-                        <h1 className="text-4xl font-bold text-gray-900">Get a Quote</h1>
                         <p className="mt-4 text-lg text-gray-600">
-                            Upload your STL files and we'll provide you with a custom quote
+                            Upload your STL files and we&apos;ll provide you with a custom quote
                         </p>
+
                     </motion.div>
 
                     <motion.div

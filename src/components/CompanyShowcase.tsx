@@ -1,5 +1,6 @@
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Building2, Users, Trophy, Printer } from "lucide-react";
 
 const stats = [
@@ -27,7 +28,7 @@ export const CompanyShowcase = () => {
               Excellence in 3D Printing
             </h2>
             <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-              With years of experience and cutting-edge technology, we deliver exceptional 
+              With years of experience and cutting-edge technology, we deliver exceptional
               3D printing solutions for businesses and individuals.
             </p>
           </motion.div>
@@ -42,9 +43,11 @@ export const CompanyShowcase = () => {
             viewport={{ once: true }}
             className="rounded-2xl overflow-hidden shadow-lg"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
               alt="3D Printing Process"
+              width={800}
+              height={400}
               className="w-full h-64 object-cover hover:scale-105 transition-transform"
             />
           </motion.div>
@@ -55,9 +58,11 @@ export const CompanyShowcase = () => {
             viewport={{ once: true }}
             className="rounded-2xl overflow-hidden shadow-lg"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1518770660439-4636190af475"
               alt="Advanced Technology"
+              width={800}
+              height={400}
               className="w-full h-64 object-cover hover:scale-105 transition-transform"
             />
           </motion.div>
@@ -68,9 +73,11 @@ export const CompanyShowcase = () => {
             viewport={{ once: true }}
             className="rounded-2xl overflow-hidden shadow-lg"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
               alt="Quality Control"
+              width={800}
+              height={400}
               className="w-full h-64 object-cover hover:scale-105 transition-transform"
             />
           </motion.div>
@@ -106,10 +113,10 @@ export const CompanyShowcase = () => {
             Why Choose 3Deality?
           </h3>
           <p className="text-gray-600 leading-relaxed">
-            At 3Deality, we combine cutting-edge technology with years of expertise to deliver 
-            exceptional 3D printing solutions. Our state-of-the-art facilities and dedicated team 
-            ensure that every project meets the highest standards of quality and precision. 
-            Whether you're a startup prototyping your first product or an established business 
+            At 3Deality, we combine cutting-edge technology with years of expertise to deliver
+            exceptional 3D printing solutions. Our state-of-the-art facilities and dedicated team
+            ensure that every project meets the highest standards of quality and precision.
+            Whether you&apos;re a startup prototyping your first product or an established business
             needing production-ready parts, we have the capabilities to bring your vision to life.
           </p>
         </motion.div>
