@@ -1,58 +1,40 @@
-import { useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    kiri?: {
-      api?: {
-        frame?: {
-          setMode: (mode: string) => void;
-          clear: () => void;
-          load: (path: string) => void;
-          on: (event: string, callback: () => void) => void;
-          slice: () => void;
-          prepare: () => void;
-          export: () => void;
-        };
-      };
-    };
-  }
+import { useEffect, useState } from 'react';
+interface SlicerWindowProps {
+    files: File[];
 }
 
-const SlicerWindow: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+const SlicerWindow = ({ files }: SlicerWindowProps) => {
+    const [api, setApi] = useState<any>(null);
 
-  useEffect(() => {
-    if (!window.kiri?.api?.frame) {
-      console.error("Kiri:Moto API not found. Ensure the script is loaded.");
-      return;
-    }
+    useEffect(() => {
+        // Load the external script dynamically
+        const script = document.createElement("script");
+        script.src = "https://grid.space/code/frame.js";
+        script.async = true;
+        document.body.appendChild(script);
 
-    const api = window.kiri.api.frame;
-    api.setMode("FDM"); // FDM (Fused Deposition Modeling)
-    api.clear();
-    // api.load("/obj/cube.stl");
+        script.onload = () => {
+            let win = window as any;
+            if (win.kiri && win.kiri.frame) {
+                let kiriAPI = win.kiri.frame;
+                kiriAPI.setFrame("kiriFrame");
+                setApi(kiriAPI);
+            }
+        };
+    }, []);
 
-    api.on("loaded", () => {
-      console.log("Model loaded, starting slicing...");
-      api.slice();
-    });
+    useEffect(() => {
+    }, [files]);
 
-    api.on("slice.done", () => {
-      console.log("Slicing done, preparing...");
-      api.prepare();
-    });
-
-    api.on("prepare.done", () => {
-      console.log("Preparation done, exporting...");
-      api.export();
-    });
-  }, []);
-
-  return (
-    <div ref={containerRef} id="kiri-container" style={{ width: "100%", height: "500px" }}>
-      {/* If Kiri:Moto needs a canvas or container, it will use this */}
-    </div>
-  );
+    return (
+        <div className="w-full h-[500px] bg-gray-100 rounded-lg flex items-center justify-center">
+            < iframe
+                id="kiriFrame"
+                src="https://grid.space/kiri/"
+                className="w-full h-full border-none"
+            />
+        </div >
+    );
 };
 
 export default SlicerWindow;
